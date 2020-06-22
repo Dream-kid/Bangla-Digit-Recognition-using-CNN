@@ -19,15 +19,15 @@ def prepare(filepath):
     return new_array.reshape(-1, IMG_SIZE, IMG_SIZE, 1)
 
 
+def ok(str1):
+    model=tf.keras.models.load_model("64x3-CNN.model")
+    predection=model.predict([prepare(str1)])
 
-model=tf.keras.models.load_model("64x3-CNN.model")
-predection=model.predict([prepare('input/1.tif')])
-
-print(predection)
-for i in range(10):
-    temp = int(predection[0][i])
-    if temp ==1:
-        print(i)
-        break
+    print(predection)
+    for i in range(10):
+        temp = int(predection[0][i])
+        if temp ==1:
+            print(i)
+            break
 #print(CATEGORIES[int(predection[0][0])])
 
