@@ -53,7 +53,7 @@ tensorboard = TensorBoard(log_dir="logs\\{}".format(NAME))
 
 
 #Modelcheckpoint
-checkpointer = tf.keras.callbacks.ModelCheckpoint('model_for_covid_cnn.h5', verbose=1, save_best_only=True)
+checkpointer = tf.keras.callbacks.ModelCheckpoint('64x3-CNN.model', verbose=1, save_best_only=True)
 
 
 model.fit(X, y, validation_split=0.1, batch_size=16, epochs=10, callbacks=[tensorboard])
