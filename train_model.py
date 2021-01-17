@@ -51,6 +51,10 @@ model.add(Dense(10, activation='softmax'))
 model.compile(loss='sparse_categorical_crossentropy', metrics=['accuracy'], optimizer='adam')
 tensorboard = TensorBoard(log_dir="logs\\{}".format(NAME))
 
-model.fit(X, y, batch_size=32, epochs=10, callbacks=[tensorboard])
 
+#Modelcheckpoint
+checkpointer = tf.keras.callbacks.ModelCheckpoint('model_for_covid_cnn.h5', verbose=1, save_best_only=True)
+
+
+model.fit(X, y, validation_split=0.1, batch_size=16, epochs=10, callbacks=[tensorboard])
 model.save('64x3-CNN.model')
